@@ -6,6 +6,7 @@
   "scripts": {
     "cypress:run": "cypress run",
     "cypress:open": "cypress open",
+    "cypress:server": "node cypress/server",
     "cypress:verify": "cypress verify",
     "cypress:version": "cypress version",
     "cypress:info": "cypress info",

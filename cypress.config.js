@@ -1,4 +1,5 @@
 import { defineConfig } from "cypress";
+import path from "path";
 
 export default defineConfig({
   e2e: {
@@ -6,18 +7,11 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // load extension
       on("before:browser:launch", (browser, launchOptions) => {
-        // load extension from local dev folder
-        const extensionPath = path.resolve(
-          "build",
-          extVersion,
-          "dev",
-          browserDir
-        );
+        // load extension from ext folder
+        const extensionPath = path.resolve("ext");
         launchOptions.extensions.push(extensionPath);
         return launchOptions;
       });
-
-      // TODO: need a test extension
 
       // Chrome and Firefox only
       config.browsers = config.browsers.filter(

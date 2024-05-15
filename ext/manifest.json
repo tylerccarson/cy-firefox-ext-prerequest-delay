@@ -1,0 +1,24 @@
+{
+  "name": "Firefox Extension HTTP Request Delay",
+  "description": "Demonstrates a Cypress bug handling HTTP requests from FF Extensions",
+  "manifest_version": 2,
+  "version": "1.0",
+  "permissions": [
+    "tabs",
+    "http://*/*",
+    "https://*/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_security_policy": "default-src 'self'; connect-src 'self' *;",
+  "content_scripts": [
+    {
+      "matches": ["http://localhost/index.html"],
+      "all_frames": true,
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}

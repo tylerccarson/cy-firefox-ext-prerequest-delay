@@ -1,11 +1,12 @@
 /// <reference types="cypress" />
-describe('page', () => {
+describe("page", () => {
+  it("fetches text from API within 100ms", () => {
+    cy.visit("/index.html");
 
-  // 1: request with the bug
-  it('works', () => {
-    cy.visit('https://example.cypress.io')
-  })
+    cy.get("button").click();
 
-  // 2: same request from the webpage, NO bug
-
-})
+    cy.contains("Hello World!", {
+      timeout: 100,
+    });
+  });
+});
